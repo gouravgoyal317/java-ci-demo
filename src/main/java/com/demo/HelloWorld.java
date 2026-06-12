@@ -1,6 +1,5 @@
-@SpringBootApplication
-public class Application {
+public class HelloWorld {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class,args);
+        System.out.println("Hello Jenkins!");
     }
 }
