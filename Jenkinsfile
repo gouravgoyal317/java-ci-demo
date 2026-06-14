@@ -11,7 +11,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('Docker build')
+        stage('Docker build') {
             steps {
                 sh 'docker build -t springboot-demo:latest .'
             }
