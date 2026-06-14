@@ -16,6 +16,23 @@ pipeline {
                 sh 'docker build -t springboot-demo:latest .'
             }
         }
+        stage('Docker Login') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-cred',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                sh 'docker tag springboot-demo:latest sourabgoyal82/springboot-demo:latest'
+                sh 'docker push sourabgoyal82/springboot-demo:latest'
+            }
+        }
         stage('Remove Old Container') {
             steps {
                 sh 'docker rm -f springboot-demo || true'
