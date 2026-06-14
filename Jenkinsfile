@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Run Container') {
             steps {
-                sh 'docker run -d --name springboot -p 8082:8080 springboot-demo:latest
+                sh 'docker run -d --name springboot -p 8082:8080 springboot-demo:latest'
             }
         }
         stage('Verify') {
