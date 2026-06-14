@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Remove Old Container') {
             steps {
-                sh 'docker rm -f springboot-demo || true'
+                sh 'docker rm -f springboot || true'
             }
         }
         stage('Run Container') {
