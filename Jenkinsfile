@@ -48,5 +48,13 @@ pipeline {
                 sh 'docker ps'
             }
         }
+        stage('Deploy To Kubernates') {
+            steps {
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
+                sh 'kubectl rollout restart deployment/springboot-demo'
+            }
+        }
+     
     }
 }
